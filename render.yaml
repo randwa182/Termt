@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: sub4sub-24x7
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python main.py"
+    plan: free
