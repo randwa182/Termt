@@ -5,6 +5,12 @@ from flask import Flask
 
 app = Flask(__name__)
 
+# Homepage route for UptimeRobot
+@app.route('/')
+def home():
+    return "I am alive", 200
+
+# Optional ping route (also works with UptimeRobot)
 @app.route('/ping')
 def ping():
     return "✅ I'm alive!", 200
@@ -69,8 +75,8 @@ def background_worker():
                     if 'id' in response_json:
                         print(f"✅ Success ID: {response_json['id']}")
                     else:
-                        print(f"⚠️ 'id' not found, full response:
-{response_json}")
+                        print("⚠️ 'id' not found, full response:")
+                        print(response_json)
                 else:
                     print(f"❌ Error {r.status_code}: {r.text}")
             except Exception as e:
@@ -78,7 +84,9 @@ def background_worker():
         print("⏳ Sleeping for 6 hours...\n")
         time.sleep(6 * 60 * 60)
 
+# Start the background task
 threading.Thread(target=background_worker, daemon=True).start()
 
+# Start Flask app
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000)
+    app.run(host="0.0.0.0", port=10000) 
