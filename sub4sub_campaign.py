@@ -17,7 +17,7 @@ def build_multipart_data():
         "likes": "0",
         "comments": "0",
         "view_duration": "45",
-        "cost": "90",
+        "cost": "900",
         "reward": "67",
         "currency": "1",
         "video.uid": "ArW6tIr5bE4",
